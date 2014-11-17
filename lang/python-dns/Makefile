@@ -38,9 +38,11 @@ define Build/Compile
 endef
 
 define Package/python-dns/install
+	$(call Build/Compile/PyMod,,install --prefix=/usr --root=$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)$(PYTHON_PKG_DIR)
 	$(CP) $(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/dns/* \
 		$(1)$(PYTHON_PKG_DIR)
+	
 endef
 
 $(eval $(call BuildPackage,python-dns))
